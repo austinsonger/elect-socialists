@@ -81,9 +81,15 @@ const StateManager = (function() {
 
     /**
      * Apply current filters to officials data
+     * @param {boolean} skipTimelineFilter - Skip timeline filtering (used internally)
      */
-    function applyFilters() {
+    function applyFilters(skipTimelineFilter = false) {
         let filtered = state.allOfficials;
+
+        // Timeline filter (if active and not skipped)
+        if (!skipTimelineFilter && typeof TimelineController !== 'undefined') {
+            filtered = TimelineController.getVisibleOfficials(filtered);
+        }
 
         // Search filter
         if (state.filters.search) {
@@ -119,14 +125,17 @@ const StateManager = (function() {
             );
         }
 
-        // Year elected filter
-        if (state.filters.yearStart || state.filters.yearEnd) {
-            filtered = filtered.filter(official => {
-                const yearElected = official.yearElected;
-                const meetsStart = !state.filters.yearStart || yearElected >= state.filters.yearStart;
-                const meetsEnd = !state.filters.yearEnd || yearElected <= state.filters.yearEnd;
-                return meetsStart && meetsEnd;
-            });
+        // Year elected filter (only if timeline is not active)
+        if (!skipTimelineFilter && (state.filters.yearStart || state.filters.yearEnd)) {
+            const timelineState = typeof TimelineController !== 'undefined' ? TimelineController.getState() : {};
+            if (!timelineState.isTimelineActive) {
+                filtered = filtered.filter(official => {
+                    const yearElected = official.yearElected;
+                    const meetsStart = !state.filters.yearStart || yearElected >= state.filters.yearStart;
+                    const meetsEnd = !state.filters.yearEnd || yearElected <= state.filters.yearEnd;
+                    return meetsStart && meetsEnd;
+                });
+            }
         }
 
         state.filteredOfficials = filtered;

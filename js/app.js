@@ -31,6 +31,10 @@
             // Set officials in state manager
             StateManager.setOfficials(result.officials);
 
+            // Initialize timeline controller
+            TimelineController.initialize(result.officials);
+            initializeTimelineUI();
+
             // Add initial markers to map
             MapManager.addMarkers(result.officials);
 
@@ -88,6 +92,181 @@
     }
 
     /**
+     * Initialize timeline UI and event handlers
+     */
+    function initializeTimelineUI() {
+        const timelineState = TimelineController.getState();
+        
+        // Update slider bounds
+        const slider = document.getElementById('timeline-slider');
+        if (slider && timelineState.minYear && timelineState.maxYear) {
+            slider.min = timelineState.minYear;
+            slider.max = timelineState.maxYear;
+            slider.value = timelineState.maxYear;
+            slider.setAttribute('aria-valuemin', timelineState.minYear);
+            slider.setAttribute('aria-valuemax', timelineState.maxYear);
+            slider.setAttribute('aria-valuenow', timelineState.maxYear);
+            
+            // Update labels
+            document.getElementById('timeline-label-start').textContent = timelineState.minYear;
+            document.getElementById('timeline-label-end').textContent = timelineState.maxYear;
+        }
+
+        // Timeline toggle button
+        const toggleBtn = document.getElementById('timeline-toggle');
+        if (toggleBtn) {
+            toggleBtn.addEventListener('click', function() {
+                TimelineController.toggleTimeline();
+            });
+        }
+
+        // Play/Pause button
+        const playPauseBtn = document.getElementById('timeline-play-pause');
+        if (playPauseBtn) {
+            playPauseBtn.addEventListener('click', function() {
+                TimelineController.togglePlayPause();
+            });
+        }
+
+        // Step forward button
+        const stepForwardBtn = document.getElementById('timeline-step-forward');
+        if (stepForwardBtn) {
+            stepForwardBtn.addEventListener('click', function() {
+                TimelineController.stepForward();
+            });
+        }
+
+        // Step backward button
+        const stepBackBtn = document.getElementById('timeline-step-back');
+        if (stepBackBtn) {
+            stepBackBtn.addEventListener('click', function() {
+                TimelineController.stepBackward();
+            });
+        }
+
+        // Reset button
+        const resetBtn = document.getElementById('timeline-reset');
+        if (resetBtn) {
+            resetBtn.addEventListener('click', function() {
+                TimelineController.reset();
+            });
+        }
+
+        // Speed selector
+        const speedSelect = document.getElementById('timeline-speed-select');
+        if (speedSelect) {
+            speedSelect.addEventListener('change', function(e) {
+                const speed = parseFloat(e.target.value);
+                TimelineController.setSpeed(speed);
+            });
+        }
+
+        // Slider input
+        if (slider) {
+            slider.addEventListener('input', function(e) {
+                const year = parseInt(e.target.value);
+                TimelineController.setYear(year);
+            });
+        }
+
+        // Subscribe to timeline events
+        TimelineController.subscribe('yearChange', function(data) {
+            updateTimelineDisplay(data);
+            StateManager.applyFilters();
+        });
+
+        TimelineController.subscribe('playStateChange', function(data) {
+            updatePlayPauseButton(data.isPlaying);
+        });
+
+        TimelineController.subscribe('timelineToggle', function(data) {
+            updateTimelinePanel(data.active);
+        });
+
+        // Subscribe to state changes to update map
+        StateManager.subscribe('officialsChange', function(data) {
+            MapManager.updateMarkers(data.filteredOfficials);
+        });
+    }
+
+    /**
+     * Update timeline display with current year and count
+     * @param {Object} data - Year and count data
+     */
+    function updateTimelineDisplay(data) {
+        const yearDisplay = document.getElementById('timeline-year');
+        const countDisplay = document.getElementById('timeline-count');
+        const slider = document.getElementById('timeline-slider');
+        const progress = document.getElementById('timeline-progress');
+
+        if (yearDisplay) {
+            yearDisplay.textContent = data.year;
+        }
+
+        if (countDisplay) {
+            countDisplay.textContent = data.count;
+        }
+
+        if (slider) {
+            slider.value = data.year;
+            slider.setAttribute('aria-valuenow', data.year);
+        }
+
+        // Update progress bar
+        if (progress && slider) {
+            const timelineState = TimelineController.getState();
+            const range = timelineState.maxYear - timelineState.minYear;
+            const position = data.year - timelineState.minYear;
+            const percentage = (position / range) * 100;
+            progress.style.width = `${percentage}%`;
+        }
+    }
+
+    /**
+     * Update play/pause button state
+     * @param {boolean} isPlaying - Whether timeline is playing
+     */
+    function updatePlayPauseButton(isPlaying) {
+        const icon = document.getElementById('play-pause-icon');
+        const button = document.getElementById('timeline-play-pause');
+
+        if (icon) {
+            icon.textContent = isPlaying ? '⏸' : '▶';
+        }
+
+        if (button) {
+            button.setAttribute('aria-label', isPlaying ? 'Pause timeline animation' : 'Play timeline animation');
+        }
+    }
+
+    /**
+     * Update timeline panel visibility
+     * @param {boolean} active - Whether timeline is active
+     */
+    function updateTimelinePanel(active) {
+        const content = document.getElementById('timeline-content');
+        const toggleBtn = document.getElementById('timeline-toggle');
+        const toggleText = toggleBtn ? toggleBtn.querySelector('.timeline-toggle-text') : null;
+
+        if (content) {
+            content.style.display = active ? 'block' : 'none';
+        }
+
+        if (toggleBtn) {
+            toggleBtn.setAttribute('aria-pressed', active.toString());
+        }
+
+        if (toggleText) {
+            toggleText.textContent = active ? 'Deactivate Timeline' : 'Activate Timeline';
+        }
+
+        // Trigger filter reapplication
+        if (!active) {
+            StateManager.applyFilters();
+        }
+    }
+
+    /**
      * Setup keyboard accessibility
      */
     function setupKeyboardAccessibility() {
@@ -95,6 +274,25 @@
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 PopupComponent.closePopup();
+            }
+
+            // Timeline keyboard controls
+            const timelineState = TimelineController.getState();
+            if (timelineState.isTimelineActive) {
+                // Spacebar to play/pause
+                if (e.code === 'Space' && e.target.tagName !== 'INPUT' && e.target.tagName !== 'SELECT') {
+                    e.preventDefault();
+                    TimelineController.togglePlayPause();
+                }
+                // Arrow keys to step
+                else if (e.key === 'ArrowRight') {
+                    e.preventDefault();
+                    TimelineController.stepForward();
+                }
+                else if (e.key === 'ArrowLeft') {
+                    e.preventDefault();
+                    TimelineController.stepBackward();
+                }
             }
         });
     }
