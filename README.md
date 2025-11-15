@@ -123,11 +123,90 @@ ISC
 
 ## Contributing
 
-To contribute:
-1. Verify all officials data is accurate
-2. Ensure data follows the required schema
-3. Test on multiple devices and browsers
-4. Validate accessibility features
+We welcome contributions from the community! Here's how you can help:
+
+### Adding a New Official
+
+1. **Fork the repository** and create a new branch
+2. **Use the Pull Request template** - When you create a PR, our template will guide you through providing all necessary information
+3. **Verify the official** is currently elected and identifies as Democratic Socialist or Socialist
+4. **Gather accurate information** from official government sources:
+   - Official government email, phone, and website
+   - Accurate coordinates for their district/office (use [LatLong.net](https://www.latlong.net/))
+   - Committee assignments and voting records
+   - Biographical information from official sources
+
+5. **Follow the JSON structure** exactly as shown in `data/officials.json`:
+   ```json
+   {
+     "id": "xx-001",
+     "name": "Official Name",
+     "position": "Position Title",
+     "officeLevel": "federal|state|county|city",
+     "politicalAffiliation": "Democratic Socialist",
+     "location": {
+       "state": "XX",
+       "county": null,
+       "city": "City Name",
+       "district": null,
+       "latitude": 0.0,
+       "longitude": 0.0
+     },
+     "contact": {
+       "email": null,
+       "phone": "(XXX) XXX-XXXX",
+       "website": "https://...",
+       "socialMedia": {
+         "twitter": "@handle",
+         "instagram": null
+       }
+     },
+     "photo": null,
+     "bio": "Factual 2-3 sentence biography...",
+     "termStart": "YYYY-MM-DD",
+     "termEnd": null,
+     "committeeMemberships": [],
+     "votingRecord": null,
+     "yearElected": 2024
+   }
+   ```
+
+6. **Validate your JSON** using a JSON validator before submitting
+7. **Test locally** to ensure the new official appears correctly on the map
+8. **Submit a pull request** with sources for verification
+
+### Updating Existing Officials
+
+If an official's information has changed (new committee assignment, updated contact info, term ended, etc.):
+1. Edit the relevant entry in `data/officials.json`
+2. Include sources for the updated information in your PR description
+3. Note what changed and why
+
+### Other Contributions
+
+- **Bug reports**: Open an issue with details about the problem
+- **Feature requests**: Describe the feature and its benefits
+- **Code improvements**: Follow existing code style and include tests
+- **Documentation**: Help improve clarity and accuracy
+
+### Contribution Guidelines
+
+✅ **DO:**
+- Verify all information from official government sources
+- Use neutral, factual language in biographies
+- Follow the existing JSON structure exactly
+- Include your sources in the PR
+- Test your changes locally before submitting
+
+❌ **DON'T:**
+- Include political opinions or endorsements
+- Use unofficial or campaign websites as primary sources
+- Break the JSON structure or syntax
+- Submit without testing
+
+### Questions?
+
+If you're unsure about anything, feel free to open an issue and ask before submitting your PR!
 
 ## Deployment
 
