@@ -85,13 +85,39 @@ const FilterController = (function() {
             toggleFilterPanel();
         });
 
-        // Mobile: tap on filter header to toggle
+        // Mobile: tap on filter header to toggle - with dynamic resize handling
         const filterHeader = document.querySelector('.filter-header');
-        if (window.innerWidth <= 768) {
-            filterHeader.addEventListener('click', function() {
-                toggleFilterPanel();
-            });
+        let filterHeaderClickHandler = null;
+        
+        function updateFilterHeaderBehavior() {
+            const isMobile = window.innerWidth <= 768;
+            
+            if (isMobile && !filterHeaderClickHandler) {
+                // Add click handler for mobile
+                filterHeaderClickHandler = function() {
+                    toggleFilterPanel();
+                };
+                filterHeader.addEventListener('click', filterHeaderClickHandler);
+            } else if (!isMobile && filterHeaderClickHandler) {
+                // Remove click handler for desktop
+                filterHeader.removeEventListener('click', filterHeaderClickHandler);
+                filterHeaderClickHandler = null;
+                // Ensure panel is not in expanded state on desktop
+                elements.filterPanel.classList.remove('expanded');
+            }
         }
+        
+        // Initial setup
+        updateFilterHeaderBehavior();
+        
+        // Update on window resize
+        let resizeTimeout;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                updateFilterHeaderBehavior();
+            }, 250);
+        });
 
         // Subscribe to state changes
         StateManager.subscribe('officialsChange', handleOfficialsChange);

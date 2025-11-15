@@ -312,6 +312,39 @@
                 }
             }, 250);
         });
+        
+        // Handle virtual keyboard for better mobile UX
+        setupVirtualKeyboardHandling();
+    }
+    
+    /**
+     * Setup virtual keyboard handling for mobile devices
+     */
+    function setupVirtualKeyboardHandling() {
+        const inputs = document.querySelectorAll('input, select, textarea');
+        let initialViewportHeight = window.innerHeight;
+        
+        inputs.forEach(input => {
+            // When input is focused, scroll it into view
+            input.addEventListener('focus', function() {
+                // Small delay to allow keyboard to appear
+                setTimeout(() => {
+                    // Check if viewport height changed (keyboard appeared)
+                    const currentHeight = window.innerHeight;
+                    if (currentHeight < initialViewportHeight * 0.75) {
+                        // Keyboard is likely open, scroll element into view
+                        this.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                }, 300);
+            });
+            
+            // Update initial height on blur
+            input.addEventListener('blur', function() {
+                setTimeout(() => {
+                    initialViewportHeight = window.innerHeight;
+                }, 300);
+            });
+        });
     }
 
     /**

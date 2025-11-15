@@ -31,13 +31,23 @@ const MapManager = (function() {
      * @param {string} containerId - ID of the map container element
      */
     function initMap(containerId = 'map') {
-        // Create map centered on continental US
+        // Determine if touch device for optimized settings
+        const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+        
+        // Create map centered on continental US with touch-optimized settings
         map = L.map(containerId, {
             center: [39.8283, -98.5795], // Geographic center of continental US
             zoom: 4,
             minZoom: 3,
             maxZoom: 18,
-            zoomControl: true
+            zoomControl: true,
+            // Touch interaction optimizations
+            tap: isTouchDevice,
+            tapTolerance: 15, // Pixels of tolerance for tap events
+            touchZoom: isTouchDevice,
+            bounceAtZoomLimits: false,
+            zoomSnap: 0.5, // Smoother zoom on mobile
+            wheelPxPerZoomLevel: 120 // Better zoom sensitivity
         });
 
         // Add OpenStreetMap tiles
@@ -46,12 +56,13 @@ const MapManager = (function() {
             maxZoom: 18
         }).addTo(map);
 
-        // Initialize marker cluster group
+        // Initialize marker cluster group with touch-optimized settings
         markerClusterGroup = L.markerClusterGroup({
-            maxClusterRadius: 60,
+            maxClusterRadius: isTouchDevice ? 80 : 60, // Larger radius on touch for easier selection
             spiderfyOnMaxZoom: true,
-            showCoverageOnHover: false,
+            showCoverageOnHover: !isTouchDevice, // Disable hover on touch devices
             zoomToBoundsOnClick: true,
+            spiderfyDistanceMultiplier: isTouchDevice ? 1.5 : 1, // More spacing on touch
             iconCreateFunction: function(cluster) {
                 const count = cluster.getChildCount();
                 let size = 'small';
@@ -78,7 +89,7 @@ const MapManager = (function() {
         // Subscribe to view mode changes
         StateManager.subscribe('viewModeChange', handleViewModeChange);
 
-        console.log('Map initialized');
+        console.log('Map initialized with touch optimization:', isTouchDevice);
     }
 
     /**
