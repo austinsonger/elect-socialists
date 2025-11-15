@@ -142,6 +142,28 @@
 
         <!-- Map Container -->
         <section id="map-container" class="map-container" role="region" aria-label="Interactive map of officials">
+            <!-- View Mode Toggle -->
+            <div class="view-mode-toggle" role="radiogroup" aria-label="View mode selection">
+                <button 
+                    id="markers-view-btn" 
+                    class="view-mode-btn active" 
+                    role="radio" 
+                    aria-checked="true"
+                    aria-label="Markers view mode">
+                    <span class="view-mode-icon">📍</span>
+                    <span class="view-mode-label">Markers</span>
+                </button>
+                <button 
+                    id="heatmap-view-btn" 
+                    class="view-mode-btn" 
+                    role="radio" 
+                    aria-checked="false"
+                    aria-label="Heatmap view mode">
+                    <span class="view-mode-icon">🔥</span>
+                    <span class="view-mode-label">Heatmap</span>
+                </button>
+            </div>
+            
             <div id="map" role="application" aria-label="United States map with official locations"></div>
             
             <!-- Loading Indicator -->
@@ -155,90 +177,6 @@
                 <p>No officials found matching your filters.</p>
                 <p>Try adjusting your filter criteria.</p>
             </div>
-
-            <!-- Timeline Panel -->
-            <div id="timeline-panel" class="timeline-panel" role="region" aria-label="Timeline controls">
-                <div class="timeline-header">
-                    <h3>Timeline Visualization</h3>
-                    <button id="timeline-toggle" class="timeline-toggle-btn" aria-label="Toggle timeline mode" aria-pressed="false">
-                        <span class="timeline-toggle-icon">📊</span>
-                        <span class="timeline-toggle-text">Activate Timeline</span>
-                    </button>
-                </div>
-                
-                <div id="timeline-content" class="timeline-content" style="display: none;">
-                    <!-- Year Display and Statistics -->
-                    <div class="timeline-info">
-                        <div class="timeline-year-display">
-                            <span class="timeline-label">Current Year:</span>
-                            <span id="timeline-year" class="timeline-year" aria-live="polite">2006</span>
-                        </div>
-                        <div class="timeline-stats">
-                            <span class="timeline-label">Officials Elected:</span>
-                            <span id="timeline-count" class="timeline-count" aria-live="polite">0</span>
-                        </div>
-                    </div>
-
-                    <!-- Timeline Controls -->
-                    <div class="timeline-controls">
-                        <!-- Step Backward Button -->
-                        <button id="timeline-step-back" class="timeline-btn timeline-step-btn" aria-label="Step backward one year" title="Previous year">
-                            <span class="timeline-btn-icon">⏮</span>
-                        </button>
-
-                        <!-- Play/Pause Button -->
-                        <button id="timeline-play-pause" class="timeline-btn timeline-play-btn" aria-label="Play timeline animation" title="Play/Pause">
-                            <span class="timeline-btn-icon" id="play-pause-icon">▶</span>
-                        </button>
-
-                        <!-- Step Forward Button -->
-                        <button id="timeline-step-forward" class="timeline-btn timeline-step-btn" aria-label="Step forward one year" title="Next year">
-                            <span class="timeline-btn-icon">⏭</span>
-                        </button>
-
-                        <!-- Speed Control -->
-                        <div class="timeline-speed">
-                            <label for="timeline-speed-select" class="timeline-speed-label">Speed:</label>
-                            <select id="timeline-speed-select" class="timeline-speed-select" aria-label="Animation speed">
-                                <option value="0.5">0.5x</option>
-                                <option value="1" selected>1x</option>
-                                <option value="2">2x</option>
-                                <option value="3">3x</option>
-                            </select>
-                        </div>
-
-                        <!-- Reset Button -->
-                        <button id="timeline-reset" class="timeline-btn timeline-reset-btn" aria-label="Reset timeline to beginning" title="Reset">
-                            <span class="timeline-btn-icon">↺</span>
-                        </button>
-                    </div>
-
-                    <!-- Timeline Slider -->
-                    <div class="timeline-slider-container">
-                        <label for="timeline-slider" class="sr-only">Year selector</label>
-                        <input 
-                            type="range" 
-                            id="timeline-slider" 
-                            class="timeline-slider" 
-                            min="2006" 
-                            max="2022" 
-                            value="2006" 
-                            step="1"
-                            aria-label="Timeline year slider"
-                            aria-valuemin="2006"
-                            aria-valuemax="2022"
-                            aria-valuenow="2006"
-                        />
-                        <div class="timeline-track">
-                            <div class="timeline-progress" id="timeline-progress"></div>
-                        </div>
-                        <div class="timeline-labels">
-                            <span class="timeline-label-start" id="timeline-label-start">2006</span>
-                            <span class="timeline-label-end" id="timeline-label-end">2022</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </section>
     </main>
 
@@ -250,10 +188,13 @@
     <!-- Leaflet MarkerCluster JS -->
     <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
     
+    <!-- Leaflet.heat JS -->
+    <script src="https://unpkg.com/leaflet.heat@0.2.0/dist/leaflet-heat.js"></script>
+    
     <!-- Custom JavaScript -->
     <script src="js/data-loader.js"></script>
     <script src="js/state-manager.js"></script>
-    <script src="js/timeline-controller.js"></script>
+    <script src="js/heatmap-manager.js"></script>
     <script src="js/map-manager.js"></script>
     <script src="js/filter-controller.js"></script>
     <script src="js/popup-component.js"></script>

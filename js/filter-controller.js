@@ -23,7 +23,9 @@ const FilterController = (function() {
             resultsText: document.getElementById('results-text'),
             toggleFiltersBtn: document.getElementById('toggle-filters'),
             filterPanel: document.getElementById('filter-panel'),
-            noResults: document.getElementById('no-results')
+            noResults: document.getElementById('no-results'),
+            markersViewBtn: document.getElementById('markers-view-btn'),
+            heatmapViewBtn: document.getElementById('heatmap-view-btn')
         };
 
         // Setup event listeners
@@ -94,6 +96,16 @@ const FilterController = (function() {
         // Subscribe to state changes
         StateManager.subscribe('officialsChange', handleOfficialsChange);
         StateManager.subscribe('filterChange', handleFilterChange);
+        StateManager.subscribe('viewModeChange', handleViewModeChange);
+
+        // View mode toggle buttons
+        elements.markersViewBtn.addEventListener('click', function() {
+            StateManager.setViewMode('markers');
+        });
+
+        elements.heatmapViewBtn.addEventListener('click', function() {
+            StateManager.setViewMode('heatmap');
+        });
     }
 
     /**
@@ -169,8 +181,13 @@ const FilterController = (function() {
         // Update results count
         updateResultsCount(filteredOfficials.length, allOfficials.length);
 
-        // Update map markers
-        MapManager.updateMarkers(filteredOfficials);
+        // Update visualization based on current view mode
+        const viewMode = StateManager.getViewMode();
+        if (viewMode === 'heatmap') {
+            HeatmapManager.updateHeatmap(filteredOfficials);
+        } else {
+            MapManager.updateMarkers(filteredOfficials);
+        }
 
         // Show/hide no results message
         if (filteredOfficials.length === 0) {
@@ -193,6 +210,26 @@ const FilterController = (function() {
     function handleFilterChange(filters) {
         // Update UI to reflect current filters
         console.log('Filters updated:', filters);
+    }
+
+    /**
+     * Handle view mode change event
+     * @param {string} viewMode - New view mode
+     */
+    function handleViewModeChange(viewMode) {
+        // Update toggle button states
+        if (viewMode === 'heatmap') {
+            elements.markersViewBtn.classList.remove('active');
+            elements.markersViewBtn.setAttribute('aria-checked', 'false');
+            elements.heatmapViewBtn.classList.add('active');
+            elements.heatmapViewBtn.setAttribute('aria-checked', 'true');
+        } else {
+            elements.heatmapViewBtn.classList.remove('active');
+            elements.heatmapViewBtn.setAttribute('aria-checked', 'false');
+            elements.markersViewBtn.classList.add('active');
+            elements.markersViewBtn.setAttribute('aria-checked', 'true');
+        }
+        console.log('View mode UI updated:', viewMode);
     }
 
     /**

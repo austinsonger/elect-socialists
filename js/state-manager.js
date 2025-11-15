@@ -17,6 +17,7 @@ const StateManager = (function() {
             yearEnd: null
         },
         selectedOfficial: null,
+        viewMode: 'markers', // 'markers' or 'heatmap'
         isLoading: true
     };
 
@@ -24,12 +25,13 @@ const StateManager = (function() {
     const listeners = {
         stateChange: [],
         filterChange: [],
-        officialsChange: []
+        officialsChange: [],
+        viewModeChange: []
     };
 
     /**
      * Subscribe to state changes
-     * @param {string} event - Event type ('stateChange', 'filterChange', 'officialsChange')
+     * @param {string} event - Event type ('stateChange', 'filterChange', 'officialsChange', 'viewModeChange')
      * @param {Function} callback - Callback function
      */
     function subscribe(event, callback) {
@@ -81,15 +83,9 @@ const StateManager = (function() {
 
     /**
      * Apply current filters to officials data
-     * @param {boolean} skipTimelineFilter - Skip timeline filtering (used internally)
      */
-    function applyFilters(skipTimelineFilter = false) {
+    function applyFilters() {
         let filtered = state.allOfficials;
-
-        // Timeline filter (if active and not skipped)
-        if (!skipTimelineFilter && typeof TimelineController !== 'undefined') {
-            filtered = TimelineController.getVisibleOfficials(filtered);
-        }
 
         // Search filter
         if (state.filters.search) {
@@ -125,17 +121,14 @@ const StateManager = (function() {
             );
         }
 
-        // Year elected filter (only if timeline is not active)
-        if (!skipTimelineFilter && (state.filters.yearStart || state.filters.yearEnd)) {
-            const timelineState = typeof TimelineController !== 'undefined' ? TimelineController.getState() : {};
-            if (!timelineState.isTimelineActive) {
-                filtered = filtered.filter(official => {
-                    const yearElected = official.yearElected;
-                    const meetsStart = !state.filters.yearStart || yearElected >= state.filters.yearStart;
-                    const meetsEnd = !state.filters.yearEnd || yearElected <= state.filters.yearEnd;
-                    return meetsStart && meetsEnd;
-                });
-            }
+        // Year elected filter
+        if (state.filters.yearStart || state.filters.yearEnd) {
+            filtered = filtered.filter(official => {
+                const yearElected = official.yearElected;
+                const meetsStart = !state.filters.yearStart || yearElected >= state.filters.yearStart;
+                const meetsEnd = !state.filters.yearEnd || yearElected <= state.filters.yearEnd;
+                return meetsStart && meetsEnd;
+            });
         }
 
         state.filteredOfficials = filtered;
@@ -221,6 +214,30 @@ const StateManager = (function() {
         return state.isLoading;
     }
 
+    /**
+     * Set view mode (markers or heatmap)
+     * @param {string} mode - View mode: 'markers' or 'heatmap'
+     */
+    function setViewMode(mode) {
+        if (mode !== 'markers' && mode !== 'heatmap') {
+            console.error('Invalid view mode:', mode);
+            return;
+        }
+        
+        state.viewMode = mode;
+        notify('viewModeChange', mode);
+        notify('stateChange', state);
+        console.log('View mode changed to:', mode);
+    }
+
+    /**
+     * Get current view mode
+     * @returns {string} Current view mode
+     */
+    function getViewMode() {
+        return state.viewMode;
+    }
+
     // Public API
     return {
         subscribe,
@@ -233,6 +250,8 @@ const StateManager = (function() {
         getFilteredOfficials,
         getFilters,
         getSelectedOfficial,
-        isLoading
+        isLoading,
+        setViewMode,
+        getViewMode
     };
 })();

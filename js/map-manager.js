@@ -72,6 +72,12 @@ const MapManager = (function() {
 
         map.addLayer(markerClusterGroup);
 
+        // Initialize heatmap manager
+        HeatmapManager.init(map);
+
+        // Subscribe to view mode changes
+        StateManager.subscribe('viewModeChange', handleViewModeChange);
+
         console.log('Map initialized');
     }
 
@@ -167,6 +173,45 @@ const MapManager = (function() {
     }
 
     /**
+     * Handle view mode change
+     * @param {string} viewMode - New view mode ('markers' or 'heatmap')
+     */
+    function handleViewModeChange(viewMode) {
+        const filteredOfficials = StateManager.getFilteredOfficials();
+        
+        if (viewMode === 'heatmap') {
+            // Switch to heatmap view
+            hideMarkers();
+            HeatmapManager.updateHeatmap(filteredOfficials);
+            HeatmapManager.showHeatmap();
+        } else {
+            // Switch to markers view
+            HeatmapManager.hideHeatmap();
+            showMarkers();
+        }
+        
+        console.log('View mode changed to:', viewMode);
+    }
+
+    /**
+     * Hide marker cluster layer
+     */
+    function hideMarkers() {
+        if (map && markerClusterGroup && map.hasLayer(markerClusterGroup)) {
+            map.removeLayer(markerClusterGroup);
+        }
+    }
+
+    /**
+     * Show marker cluster layer
+     */
+    function showMarkers() {
+        if (map && markerClusterGroup && !map.hasLayer(markerClusterGroup)) {
+            map.addLayer(markerClusterGroup);
+        }
+    }
+
+    /**
      * Reset map view to initial position
      */
     function resetView() {
@@ -212,6 +257,8 @@ const MapManager = (function() {
         getMap,
         fitBounds,
         getMarker,
-        handleMarkerClick
+        handleMarkerClick,
+        hideMarkers,
+        showMarkers
     };
 })();
