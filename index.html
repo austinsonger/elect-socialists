@@ -180,6 +180,67 @@
         </section>
     </main>
 
+    <!-- Timeline Panel -->
+    <div id="timeline-panel" class="timeline-panel" role="region" aria-label="Timeline controls">
+        <button id="timeline-toggle" class="timeline-toggle-btn" aria-label="Toggle timeline" aria-pressed="false">
+            <span class="timeline-toggle-text">Activate Timeline</span>
+        </button>
+        
+        <div id="timeline-content" class="timeline-content" style="display: none;">
+            <div class="timeline-display">
+                <div class="timeline-year-display">
+                    <span class="timeline-label">Year:</span>
+                    <span id="timeline-year" class="timeline-year">-</span>
+                </div>
+                <div class="timeline-count-display">
+                    <span class="timeline-label">Officials:</span>
+                    <span id="timeline-count" class="timeline-count">0</span>
+                </div>
+            </div>
+            
+            <div class="timeline-slider-container">
+                <span id="timeline-label-start" class="timeline-label-year">-</span>
+                <div class="timeline-slider-wrapper">
+                    <div id="timeline-progress" class="timeline-progress"></div>
+                    <input 
+                        type="range" 
+                        id="timeline-slider" 
+                        class="timeline-slider" 
+                        min="2000" 
+                        max="2024" 
+                        value="2024"
+                        aria-label="Timeline year selector"
+                        aria-valuemin="2000"
+                        aria-valuemax="2024"
+                        aria-valuenow="2024"
+                    />
+                </div>
+                <span id="timeline-label-end" class="timeline-label-year">-</span>
+            </div>
+            
+            <div class="timeline-controls">
+                <button id="timeline-step-back" class="timeline-btn" aria-label="Step backward one year" title="Step backward">
+                    <span aria-hidden="true">⏮</span>
+                </button>
+                <button id="timeline-play-pause" class="timeline-btn timeline-btn-play" aria-label="Play timeline animation" title="Play/Pause">
+                    <span id="play-pause-icon" aria-hidden="true">▶</span>
+                </button>
+                <button id="timeline-step-forward" class="timeline-btn" aria-label="Step forward one year" title="Step forward">
+                    <span aria-hidden="true">⏭</span>
+                </button>
+                <button id="timeline-reset" class="timeline-btn" aria-label="Reset timeline to start" title="Reset">
+                    <span aria-hidden="true">⏹</span>
+                </button>
+                <select id="timeline-speed-select" class="timeline-speed-select" aria-label="Animation speed">
+                    <option value="0.5">0.5x</option>
+                    <option value="1" selected>1x</option>
+                    <option value="2">2x</option>
+                    <option value="3">3x</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
             integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
