@@ -1,0 +1,984 @@
+[
+  {
+    "id": "aoc-001",
+    "name": "Alexandria Ocasio-Cortez",
+    "position": "U.S. Representative, NY-14",
+    "officeLevel": "federal",
+    "politicalAffiliation": "Democratic Socialist",
+    "location": {
+      "state": "NY",
+      "county": "Bronx",
+      "city": "Bronx",
+      "district": "14",
+      "latitude": 40.8448,
+      "longitude": -73.8648
+    },
+    "contact": {
+      "email": "ocasiocortez@mail.house.gov",
+      "phone": "(202) 225-3965",
+      "website": "https://ocasio-cortez.house.gov",
+      "socialMedia": {
+        "twitter": "@AOC",
+        "instagram": "@aoc"
+      }
+    },
+    "photo": "https://ocasio-cortez.house.gov/sites/evo-subsites/ocasio-cortez.house.gov/files/styles/large/public/evo-media-image/aoc-headshot.jpg",
+    "bio": "Alexandria Ocasio-Cortez is the U.S. Representative for New York's 14th congressional district. A member of the Democratic Socialists of America, she advocates for progressive policies including the Green New Deal, Medicare for All, and tuition-free public college.",
+    "termStart": "2019-01-03",
+    "termEnd": null,
+    "committeeMemberships": [
+      "Committee on Financial Services",
+      "Committee on Oversight and Reform"
+    ],
+    "votingRecord": "https://www.congress.gov/member/alexandria-ocasio-cortez/O000172",
+    "yearElected": 2018
+  },
+  {
+    "id": "rb-001",
+    "name": "Rashida Tlaib",
+    "position": "U.S. Representative, MI-12",
+    "officeLevel": "federal",
+    "politicalAffiliation": "Democratic Socialist",
+    "location": {
+      "state": "MI",
+      "county": "Wayne",
+      "city": "Detroit",
+      "district": "12",
+      "latitude": 42.3314,
+      "longitude": -83.0458
+    },
+    "contact": {
+      "email": "rashida.tlaib@mail.house.gov",
+      "phone": "(202) 225-5126",
+      "website": "https://tlaib.house.gov",
+      "socialMedia": {
+        "twitter": "@RepRashida"
+      }
+    },
+    "photo": null,
+    "bio": "Rashida Tlaib represents Michigan's 12th congressional district and is a member of the Democratic Socialists of America. She focuses on environmental justice, workers' rights, and economic equality.",
+    "termStart": "2019-01-03",
+    "termEnd": null,
+    "committeeMemberships": [
+      "Committee on Financial Services",
+      "Committee on Oversight and Accountability"
+    ],
+    "votingRecord": "https://www.congress.gov/member/rashida-tlaib/T000481",
+    "yearElected": 2018
+  },
+  {
+    "id": "bs-001",
+    "name": "Bernie Sanders",
+    "position": "U.S. Senator",
+    "officeLevel": "federal",
+    "politicalAffiliation": "Democratic Socialist",
+    "location": {
+      "state": "VT",
+      "county": null,
+      "city": "Burlington",
+      "district": null,
+      "latitude": 44.4759,
+      "longitude": -73.2121
+    },
+    "contact": {
+      "email": null,
+      "phone": "(202) 224-5141",
+      "website": "https://www.sanders.senate.gov",
+      "socialMedia": {
+        "twitter": "@SenSanders"
+      }
+    },
+    "photo": null,
+    "bio": "Bernie Sanders is the senior U.S. Senator from Vermont and a self-described democratic socialist. He has championed progressive causes including Medicare for All, raising the minimum wage, and combating climate change.",
+    "termStart": "2007-01-03",
+    "termEnd": null,
+    "committeeMemberships": [
+      "Committee on the Budget (Chair)",
+      "Committee on Health, Education, Labor, and Pensions",
+      "Committee on Veterans' Affairs"
+    ],
+    "votingRecord": "https://www.congress.gov/member/bernard-sanders/S000033",
+    "yearElected": 2006
+  },
+  {
+    "id": "jb-001",
+    "name": "Julia Salazar",
+    "position": "New York State Senator, 18th District",
+    "officeLevel": "state",
+    "politicalAffiliation": "Democratic Socialist",
+    "location": {
+      "state": "NY",
+      "county": "Kings",
+      "city": "Brooklyn",
+      "district": "18",
+      "latitude": 40.7081,
+      "longitude": -73.9571
+    },
+    "contact": {
+      "email": "salazar@nysenate.gov",
+      "phone": "(718) 220-8297",
+      "website": "https://www.nysenate.gov/senators/julia-salazar",
+      "socialMedia": {
+        "twitter": "@JuliaCarmel__"
+      }
+    },
+    "photo": null,
+    "bio": "Julia Salazar is a New York State Senator representing the 18th district in Brooklyn. A member of DSA, she advocates for housing justice, workers' rights, and criminal justice reform.",
+    "termStart": "2019-01-01",
+    "termEnd": null,
+    "committeeMemberships": [
+      "Housing, Construction and Community Development",
+      "Labor"
+    ],
+    "votingRecord": null,
+    "yearElected": 2018
+  },
+  {
+    "id": "zr-001",
+    "name": "Jabari Brisport",
+    "position": "New York State Senator, 25th District",
+    "officeLevel": "state",
+    "politicalAffiliation": "Democratic Socialist",
+    "location": {
+      "state": "NY",
+      "county": "Kings",
+      "city": "Brooklyn",
+      "district": "25",
+      "latitude": 40.6782,
+      "longitude": -73.9442
+    },
+    "contact": {
+      "email": "brisport@nysenate.gov",
+      "phone": "(718) 284-4700",
+      "website": "https://www.nysenate.gov/senators/jabari-brisport",
+      "socialMedia": {
+        "twitter": "@JabariBrisport"
+      }
+    },
+    "photo": null,
+    "bio": "Jabari Brisport represents New York's 25th State Senate District. A DSA member and former teacher, he focuses on education funding, affordable housing, and environmental justice.",
+    "termStart": "2021-01-01",
+    "termEnd": null,
+    "committeeMemberships": [
+      "Education",
+      "Environmental Conservation"
+    ],
+    "votingRecord": null,
+    "yearElected": 2020
+  },
+  {
+    "id": "kc-001",
+    "name": "Kshama Sawant",
+    "position": "Seattle City Council, District 3",
+    "officeLevel": "city",
+    "politicalAffiliation": "Socialist Alternative",
+    "location": {
+      "state": "WA",
+      "county": "King",
+      "city": "Seattle",
+      "district": "3",
+      "latitude": 47.6062,
+      "longitude": -122.3321
+    },
+    "contact": {
+      "email": "kshama.sawant@seattle.gov",
+      "phone": "(206) 684-8016",
+      "website": "https://www.kshamasawant.org",
+      "socialMedia": {
+        "twitter": "@cmkshama"
+      }
+    },
+    "photo": null,
+    "bio": "Kshama Sawant is a Seattle City Council member and member of Socialist Alternative. She was instrumental in passing Seattle's $15 minimum wage and continues to fight for renters' rights and workers' movements.",
+    "termStart": "2014-01-01",
+    "termEnd": null,
+    "committeeMemberships": [
+      "Governance and Education Committee"
+    ],
+    "votingRecord": null,
+    "yearElected": 2013
+  },
+  {
+    "id": "tb-001",
+    "name": "Tiffany Cabán",
+    "position": "New York City Council, District 22",
+    "officeLevel": "city",
+    "politicalAffiliation": "Democratic Socialist",
+    "location": {
+      "state": "NY",
+      "county": "Queens",
+      "city": "Queens",
+      "district": "22",
+      "latitude": 40.7614,
+      "longitude": -73.9176
+    },
+    "contact": {
+      "email": "District22@council.nyc.gov",
+      "phone": "(718) 274-4500",
+      "website": "https://council.nyc.gov/district-22",
+      "socialMedia": {
+        "twitter": "@tiffany_caban"
+      }
+    },
+    "photo": null,
+    "bio": "Tiffany Cabán represents New York City Council District 22 in Queens. A DSA member and former public defender, she advocates for criminal justice reform, housing justice, and participatory budgeting.",
+    "termStart": "2022-01-01",
+    "termEnd": null,
+    "committeeMemberships": [
+      "Criminal Justice",
+      "Public Safety"
+    ],
+    "votingRecord": null,
+    "yearElected": 2021
+  },
+  {
+    "id": "eb-001",
+    "name": "Emily Gallagher",
+    "position": "New York State Assembly, 50th District",
+    "officeLevel": "state",
+    "politicalAffiliation": "Democratic Socialist",
+    "location": {
+      "state": "NY",
+      "county": "Kings",
+      "city": "Brooklyn",
+      "district": "50",
+      "latitude": 40.7282,
+      "longitude": -73.9571
+    },
+    "contact": {
+      "email": "gallaghere@nyassembly.gov",
+      "phone": "(718) 383-7474",
+      "website": "https://nyassembly.gov/mem/Emily-Gallagher",
+      "socialMedia": {
+        "twitter": "@GallagherForNY"
+      }
+    },
+    "photo": null,
+    "bio": "Emily Gallagher represents the 50th Assembly District in Brooklyn. A DSA member and environmental advocate, she focuses on climate action, tenant protections, and good government reform.",
+    "termStart": "2021-01-01",
+    "termEnd": null,
+    "committeeMemberships": [
+      "Environmental Conservation",
+      "Housing"
+    ],
+    "votingRecord": null,
+    "yearElected": 2020
+  },
+  {
+    "id": "zc-001",
+    "name": "Zohran Mamdani",
+    "position": "New York State Assembly, 36th District",
+    "officeLevel": "state",
+    "politicalAffiliation": "Democratic Socialist",
+    "location": {
+      "state": "NY",
+      "county": "Queens",
+      "city": "Queens",
+      "district": "36",
+      "latitude": 40.7614,
+      "longitude": -73.9176
+    },
+    "contact": {
+      "email": "mamdaniz@nyassembly.gov",
+      "phone": "(718) 651-3185",
+      "website": "https://nyassembly.gov/mem/Zohran-Mamdani",
+      "socialMedia": {
+        "twitter": "@ZohranKMamdani"
+      }
+    },
+    "photo": null,
+    "bio": "Zohran Mamdani represents the 36th Assembly District in Queens. A DSA member and former teacher, he champions social housing, climate justice, and labor rights.",
+    "termStart": "2021-01-01",
+    "termEnd": null,
+    "committeeMemberships": [
+      "Cities",
+      "Labor"
+    ],
+    "votingRecord": null,
+    "yearElected": 2020
+  },
+  {
+    "id": "mc-001",
+    "name": "Marcela Mitaynes",
+    "position": "New York State Assembly, 51st District",
+    "officeLevel": "state",
+    "politicalAffiliation": "Democratic Socialist",
+    "location": {
+      "state": "NY",
+      "county": "Kings",
+      "city": "Brooklyn",
+      "district": "51",
+      "latitude": 40.6501,
+      "longitude": -74.0048
+    },
+    "contact": {
+      "email": "mitaynesm@nyassembly.gov",
+      "phone": "(718) 492-6334",
+      "website": "https://nyassembly.gov/mem/Marcela-Mitaynes",
+      "socialMedia": {
+        "twitter": "@MarcelaMitaynes"
+      }
+    },
+    "photo": null,
+    "bio": "Marcela Mitaynes represents the 51st Assembly District in Brooklyn. A DSA member and immigrant rights advocate, she fights for housing justice, workers' rights, and immigrant protections.",
+    "termStart": "2021-01-01",
+    "termEnd": null,
+    "committeeMemberships": [
+      "Housing",
+      "Social Services"
+    ],
+    "votingRecord": null,
+    "yearElected": 2020
+  },
+  {
+    "id": "pc-001",
+    "name": "Phara Souffrant Forrest",
+    "position": "New York State Assembly, 57th District",
+    "officeLevel": "state",
+    "politicalAffiliation": "Democratic Socialist",
+    "location": {
+      "state": "NY",
+      "county": "Kings",
+      "city": "Brooklyn",
+      "district": "57",
+      "latitude": 40.6782,
+      "longitude": -73.9442
+    },
+    "contact": {
+      "email": "forrestp@nyassembly.gov",
+      "phone": "(718) 270-1486",
+      "website": "https://nyassembly.gov/mem/Phara-Souffrant-Forrest",
+      "socialMedia": {
+        "twitter": "@P4Assembly"
+      }
+    },
+    "photo": null,
+    "bio": "Phara Souffrant Forrest represents the 57th Assembly District in Brooklyn. A DSA member and registered nurse, she advocates for universal healthcare, housing as a human right, and climate justice.",
+    "termStart": "2021-01-01",
+    "termEnd": null,
+    "committeeMemberships": [
+      "Health",
+      "Housing"
+    ],
+    "votingRecord": null,
+    "yearElected": 2020
+  },
+  {
+    "id": "cc-001",
+    "name": "Chokwe Antar Lumumba",
+    "position": "Mayor of Jackson",
+    "officeLevel": "city",
+    "politicalAffiliation": "Democratic Socialist",
+    "location": {
+      "state": "MS",
+      "county": "Hinds",
+      "city": "Jackson",
+      "district": null,
+      "latitude": 32.2988,
+      "longitude": -90.1848
+    },
+    "contact": {
+      "email": "mayor@jacksonms.gov",
+      "phone": "(601) 960-1084",
+      "website": "https://www.jacksonms.gov/mayors-office",
+      "socialMedia": {
+        "twitter": "@ChokweALumumba"
+      }
+    },
+    "photo": null,
+    "bio": "Chokwe Antar Lumumba is the Mayor of Jackson, Mississippi. He advocates for economic democracy, workers' rights, and community-based development.",
+    "termStart": "2017-07-03",
+    "termEnd": null,
+    "committeeMemberships": [],
+    "votingRecord": null,
+    "yearElected": 2017
+  },
+  {
+    "id": "am-001",
+    "name": "Andrea Salinas",
+    "position": "U.S. Representative, OR-6",
+    "officeLevel": "federal",
+    "politicalAffiliation": "Democratic Socialist",
+    "location": {
+      "state": "OR",
+      "county": "Marion",
+      "city": "Salem",
+      "district": "6",
+      "latitude": 44.9429,
+      "longitude": -123.0351
+    },
+    "contact": {
+      "email": "andrea.salinas@mail.house.gov",
+      "phone": "(202) 225-5711",
+      "website": "https://salinas.house.gov",
+      "socialMedia": {
+        "twitter": "@RepAndreaSalinas"
+      }
+    },
+    "photo": null,
+    "bio": "Andrea Salinas represents Oregon's 6th congressional district. She focuses on environmental protection, healthcare access, and workers' rights.",
+    "termStart": "2023-01-03",
+    "termEnd": null,
+    "committeeMemberships": [
+      "Committee on Agriculture"
+    ],
+    "votingRecord": "https://www.congress.gov/member/andrea-salinas/S000168",
+    "yearElected": 2022
+  },
+  {
+    "id": "sw-001",
+    "name": "Summer Lee",
+    "position": "U.S. Representative, PA-12",
+    "officeLevel": "federal",
+    "politicalAffiliation": "Democratic Socialist",
+    "location": {
+      "state": "PA",
+      "county": "Allegheny",
+      "city": "Pittsburgh",
+      "district": "12",
+      "latitude": 40.4406,
+      "longitude": -79.9959
+    },
+    "contact": {
+      "email": "summer.lee@mail.house.gov",
+      "phone": "(202) 225-2135",
+      "website": "https://summerlee.house.gov",
+      "socialMedia": {
+        "twitter": "@RepSummerLee"
+      }
+    },
+    "photo": null,
+    "bio": "Summer Lee represents Pennsylvania's 12th congressional district. A DSA member, she champions environmental justice, Medicare for All, and economic equality.",
+    "termStart": "2023-01-03",
+    "termEnd": null,
+    "committeeMemberships": [
+      "Committee on Oversight and Accountability"
+    ],
+    "votingRecord": "https://www.congress.gov/member/summer-lee/L000605",
+    "yearElected": 2022
+  },
+  {
+    "id": "gr-001",
+    "name": "Greg Casar",
+    "position": "U.S. Representative, TX-35",
+    "officeLevel": "federal",
+    "politicalAffiliation": "Democratic Socialist",
+    "location": {
+      "state": "TX",
+      "county": "Travis",
+      "city": "Austin",
+      "district": "35",
+      "latitude": 30.2672,
+      "longitude": -97.7431
+    },
+    "contact": {
+      "email": "greg.casar@mail.house.gov",
+      "phone": "(202) 225-4865",
+      "website": "https://casar.house.gov",
+      "socialMedia": {
+        "twitter": "@RepCasar"
+      }
+    },
+    "photo": null,
+    "bio": "Greg Casar represents Texas's 35th congressional district. A DSA member and former Austin City Council member, he fights for workers' rights, affordable housing, and immigrant justice.",
+    "termStart": "2023-01-03",
+    "termEnd": null,
+    "committeeMemberships": [
+      "Committee on Oversight and Accountability"
+    ],
+    "votingRecord": "https://www.congress.gov/member/greg-casar/C001134",
+    "yearElected": 2022
+  }
+]
+[
+  {
+    "id": "aoc-001",
+    "name": "Alexandria Ocasio-Cortez",
+    "position": "U.S. Representative, NY-14",
+    "officeLevel": "federal",
+    "politicalAffiliation": "Democratic Socialist",
+    "location": {
+      "state": "NY",
+      "county": "Bronx",
+      "city": "Bronx",
+      "district": "14",
+      "latitude": 40.8448,
+      "longitude": -73.8648
+    },
+    "contact": {
+      "email": "ocasiocortez@mail.house.gov",
+      "phone": "(202) 225-3965",
+      "website": "https://ocasio-cortez.house.gov",
+      "socialMedia": {
+        "twitter": "@AOC",
+        "instagram": "@aoc"
+      }
+    },
+    "photo": "https://ocasio-cortez.house.gov/sites/evo-subsites/ocasio-cortez.house.gov/files/styles/large/public/evo-media-image/aoc-headshot.jpg",
+    "bio": "Alexandria Ocasio-Cortez is the U.S. Representative for New York's 14th congressional district. A member of the Democratic Socialists of America, she advocates for progressive policies including the Green New Deal, Medicare for All, and tuition-free public college.",
+    "termStart": "2019-01-03",
+    "termEnd": null,
+    "committeeMemberships": [
+      "Committee on Financial Services",
+      "Committee on Oversight and Reform"
+    ],
+    "votingRecord": "https://www.congress.gov/member/alexandria-ocasio-cortez/O000172",
+    "yearElected": 2018
+  },
+  {
+    "id": "rb-001",
+    "name": "Rashida Tlaib",
+    "position": "U.S. Representative, MI-12",
+    "officeLevel": "federal",
+    "politicalAffiliation": "Democratic Socialist",
+    "location": {
+      "state": "MI",
+      "county": "Wayne",
+      "city": "Detroit",
+      "district": "12",
+      "latitude": 42.3314,
+      "longitude": -83.0458
+    },
+    "contact": {
+      "email": "rashida.tlaib@mail.house.gov",
+      "phone": "(202) 225-5126",
+      "website": "https://tlaib.house.gov",
+      "socialMedia": {
+        "twitter": "@RepRashida"
+      }
+    },
+    "photo": null,
+    "bio": "Rashida Tlaib represents Michigan's 12th congressional district and is a member of the Democratic Socialists of America. She focuses on environmental justice, workers' rights, and economic equality.",
+    "termStart": "2019-01-03",
+    "termEnd": null,
+    "committeeMemberships": [
+      "Committee on Financial Services",
+      "Committee on Oversight and Accountability"
+    ],
+    "votingRecord": "https://www.congress.gov/member/rashida-tlaib/T000481",
+    "yearElected": 2018
+  },
+  {
+    "id": "bs-001",
+    "name": "Bernie Sanders",
+    "position": "U.S. Senator",
+    "officeLevel": "federal",
+    "politicalAffiliation": "Democratic Socialist",
+    "location": {
+      "state": "VT",
+      "county": null,
+      "city": "Burlington",
+      "district": null,
+      "latitude": 44.4759,
+      "longitude": -73.2121
+    },
+    "contact": {
+      "email": null,
+      "phone": "(202) 224-5141",
+      "website": "https://www.sanders.senate.gov",
+      "socialMedia": {
+        "twitter": "@SenSanders"
+      }
+    },
+    "photo": null,
+    "bio": "Bernie Sanders is the senior U.S. Senator from Vermont and a self-described democratic socialist. He has championed progressive causes including Medicare for All, raising the minimum wage, and combating climate change.",
+    "termStart": "2007-01-03",
+    "termEnd": null,
+    "committeeMemberships": [
+      "Committee on the Budget (Chair)",
+      "Committee on Health, Education, Labor, and Pensions",
+      "Committee on Veterans' Affairs"
+    ],
+    "votingRecord": "https://www.congress.gov/member/bernard-sanders/S000033",
+    "yearElected": 2006
+  },
+  {
+    "id": "jb-001",
+    "name": "Julia Salazar",
+    "position": "New York State Senator, 18th District",
+    "officeLevel": "state",
+    "politicalAffiliation": "Democratic Socialist",
+    "location": {
+      "state": "NY",
+      "county": "Kings",
+      "city": "Brooklyn",
+      "district": "18",
+      "latitude": 40.7081,
+      "longitude": -73.9571
+    },
+    "contact": {
+      "email": "salazar@nysenate.gov",
+      "phone": "(718) 220-8297",
+      "website": "https://www.nysenate.gov/senators/julia-salazar",
+      "socialMedia": {
+        "twitter": "@JuliaCarmel__"
+      }
+    },
+    "photo": null,
+    "bio": "Julia Salazar is a New York State Senator representing the 18th district in Brooklyn. A member of DSA, she advocates for housing justice, workers' rights, and criminal justice reform.",
+    "termStart": "2019-01-01",
+    "termEnd": null,
+    "committeeMemberships": [
+      "Housing, Construction and Community Development",
+      "Labor"
+    ],
+    "votingRecord": null,
+    "yearElected": 2018
+  },
+  {
+    "id": "zr-001",
+    "name": "Jabari Brisport",
+    "position": "New York State Senator, 25th District",
+    "officeLevel": "state",
+    "politicalAffiliation": "Democratic Socialist",
+    "location": {
+      "state": "NY",
+      "county": "Kings",
+      "city": "Brooklyn",
+      "district": "25",
+      "latitude": 40.6782,
+      "longitude": -73.9442
+    },
+    "contact": {
+      "email": "brisport@nysenate.gov",
+      "phone": "(718) 284-4700",
+      "website": "https://www.nysenate.gov/senators/jabari-brisport",
+      "socialMedia": {
+        "twitter": "@JabariBrisport"
+      }
+    },
+    "photo": null,
+    "bio": "Jabari Brisport represents New York's 25th State Senate District. A DSA member and former teacher, he focuses on education funding, affordable housing, and environmental justice.",
+    "termStart": "2021-01-01",
+    "termEnd": null,
+    "committeeMemberships": [
+      "Education",
+      "Environmental Conservation"
+    ],
+    "votingRecord": null,
+    "yearElected": 2020
+  },
+  {
+    "id": "kc-001",
+    "name": "Kshama Sawant",
+    "position": "Seattle City Council, District 3",
+    "officeLevel": "city",
+    "politicalAffiliation": "Socialist Alternative",
+    "location": {
+      "state": "WA",
+      "county": "King",
+      "city": "Seattle",
+      "district": "3",
+      "latitude": 47.6062,
+      "longitude": -122.3321
+    },
+    "contact": {
+      "email": "kshama.sawant@seattle.gov",
+      "phone": "(206) 684-8016",
+      "website": "https://www.kshamasawant.org",
+      "socialMedia": {
+        "twitter": "@cmkshama"
+      }
+    },
+    "photo": null,
+    "bio": "Kshama Sawant is a Seattle City Council member and member of Socialist Alternative. She was instrumental in passing Seattle's $15 minimum wage and continues to fight for renters' rights and workers' movements.",
+    "termStart": "2014-01-01",
+    "termEnd": null,
+    "committeeMemberships": [
+      "Governance and Education Committee"
+    ],
+    "votingRecord": null,
+    "yearElected": 2013
+  },
+  {
+    "id": "tb-001",
+    "name": "Tiffany Cabán",
+    "position": "New York City Council, District 22",
+    "officeLevel": "city",
+    "politicalAffiliation": "Democratic Socialist",
+    "location": {
+      "state": "NY",
+      "county": "Queens",
+      "city": "Queens",
+      "district": "22",
+      "latitude": 40.7614,
+      "longitude": -73.9176
+    },
+    "contact": {
+      "email": "District22@council.nyc.gov",
+      "phone": "(718) 274-4500",
+      "website": "https://council.nyc.gov/district-22",
+      "socialMedia": {
+        "twitter": "@tiffany_caban"
+      }
+    },
+    "photo": null,
+    "bio": "Tiffany Cabán represents New York City Council District 22 in Queens. A DSA member and former public defender, she advocates for criminal justice reform, housing justice, and participatory budgeting.",
+    "termStart": "2022-01-01",
+    "termEnd": null,
+    "committeeMemberships": [
+      "Criminal Justice",
+      "Public Safety"
+    ],
+    "votingRecord": null,
+    "yearElected": 2021
+  },
+  {
+    "id": "eb-001",
+    "name": "Emily Gallagher",
+    "position": "New York State Assembly, 50th District",
+    "officeLevel": "state",
+    "politicalAffiliation": "Democratic Socialist",
+    "location": {
+      "state": "NY",
+      "county": "Kings",
+      "city": "Brooklyn",
+      "district": "50",
+      "latitude": 40.7282,
+      "longitude": -73.9571
+    },
+    "contact": {
+      "email": "gallaghere@nyassembly.gov",
+      "phone": "(718) 383-7474",
+      "website": "https://nyassembly.gov/mem/Emily-Gallagher",
+      "socialMedia": {
+        "twitter": "@GallagherForNY"
+      }
+    },
+    "photo": null,
+    "bio": "Emily Gallagher represents the 50th Assembly District in Brooklyn. A DSA member and environmental advocate, she focuses on climate action, tenant protections, and good government reform.",
+    "termStart": "2021-01-01",
+    "termEnd": null,
+    "committeeMemberships": [
+      "Environmental Conservation",
+      "Housing"
+    ],
+    "votingRecord": null,
+    "yearElected": 2020
+  },
+  {
+    "id": "zc-001",
+    "name": "Zohran Mamdani",
+    "position": "New York State Assembly, 36th District",
+    "officeLevel": "state",
+    "politicalAffiliation": "Democratic Socialist",
+    "location": {
+      "state": "NY",
+      "county": "Queens",
+      "city": "Queens",
+      "district": "36",
+      "latitude": 40.7614,
+      "longitude": -73.9176
+    },
+    "contact": {
+      "email": "mamdaniz@nyassembly.gov",
+      "phone": "(718) 651-3185",
+      "website": "https://nyassembly.gov/mem/Zohran-Mamdani",
+      "socialMedia": {
+        "twitter": "@ZohranKMamdani"
+      }
+    },
+    "photo": null,
+    "bio": "Zohran Mamdani represents the 36th Assembly District in Queens. A DSA member and former teacher, he champions social housing, climate justice, and labor rights.",
+    "termStart": "2021-01-01",
+    "termEnd": null,
+    "committeeMemberships": [
+      "Cities",
+      "Labor"
+    ],
+    "votingRecord": null,
+    "yearElected": 2020
+  },
+  {
+    "id": "mc-001",
+    "name": "Marcela Mitaynes",
+    "position": "New York State Assembly, 51st District",
+    "officeLevel": "state",
+    "politicalAffiliation": "Democratic Socialist",
+    "location": {
+      "state": "NY",
+      "county": "Kings",
+      "city": "Brooklyn",
+      "district": "51",
+      "latitude": 40.6501,
+      "longitude": -74.0048
+    },
+    "contact": {
+      "email": "mitaynesm@nyassembly.gov",
+      "phone": "(718) 492-6334",
+      "website": "https://nyassembly.gov/mem/Marcela-Mitaynes",
+      "socialMedia": {
+        "twitter": "@MarcelaMitaynes"
+      }
+    },
+    "photo": null,
+    "bio": "Marcela Mitaynes represents the 51st Assembly District in Brooklyn. A DSA member and immigrant rights advocate, she fights for housing justice, workers' rights, and immigrant protections.",
+    "termStart": "2021-01-01",
+    "termEnd": null,
+    "committeeMemberships": [
+      "Housing",
+      "Social Services"
+    ],
+    "votingRecord": null,
+    "yearElected": 2020
+  },
+  {
+    "id": "pc-001",
+    "name": "Phara Souffrant Forrest",
+    "position": "New York State Assembly, 57th District",
+    "officeLevel": "state",
+    "politicalAffiliation": "Democratic Socialist",
+    "location": {
+      "state": "NY",
+      "county": "Kings",
+      "city": "Brooklyn",
+      "district": "57",
+      "latitude": 40.6782,
+      "longitude": -73.9442
+    },
+    "contact": {
+      "email": "forrestp@nyassembly.gov",
+      "phone": "(718) 270-1486",
+      "website": "https://nyassembly.gov/mem/Phara-Souffrant-Forrest",
+      "socialMedia": {
+        "twitter": "@P4Assembly"
+      }
+    },
+    "photo": null,
+    "bio": "Phara Souffrant Forrest represents the 57th Assembly District in Brooklyn. A DSA member and registered nurse, she advocates for universal healthcare, housing as a human right, and climate justice.",
+    "termStart": "2021-01-01",
+    "termEnd": null,
+    "committeeMemberships": [
+      "Health",
+      "Housing"
+    ],
+    "votingRecord": null,
+    "yearElected": 2020
+  },
+  {
+    "id": "cc-001",
+    "name": "Chokwe Antar Lumumba",
+    "position": "Mayor of Jackson",
+    "officeLevel": "city",
+    "politicalAffiliation": "Democratic Socialist",
+    "location": {
+      "state": "MS",
+      "county": "Hinds",
+      "city": "Jackson",
+      "district": null,
+      "latitude": 32.2988,
+      "longitude": -90.1848
+    },
+    "contact": {
+      "email": "mayor@jacksonms.gov",
+      "phone": "(601) 960-1084",
+      "website": "https://www.jacksonms.gov/mayors-office",
+      "socialMedia": {
+        "twitter": "@ChokweALumumba"
+      }
+    },
+    "photo": null,
+    "bio": "Chokwe Antar Lumumba is the Mayor of Jackson, Mississippi. He advocates for economic democracy, workers' rights, and community-based development.",
+    "termStart": "2017-07-03",
+    "termEnd": null,
+    "committeeMemberships": [],
+    "votingRecord": null,
+    "yearElected": 2017
+  },
+  {
+    "id": "am-001",
+    "name": "Andrea Salinas",
+    "position": "U.S. Representative, OR-6",
+    "officeLevel": "federal",
+    "politicalAffiliation": "Democratic Socialist",
+    "location": {
+      "state": "OR",
+      "county": "Marion",
+      "city": "Salem",
+      "district": "6",
+      "latitude": 44.9429,
+      "longitude": -123.0351
+    },
+    "contact": {
+      "email": "andrea.salinas@mail.house.gov",
+      "phone": "(202) 225-5711",
+      "website": "https://salinas.house.gov",
+      "socialMedia": {
+        "twitter": "@RepAndreaSalinas"
+      }
+    },
+    "photo": null,
+    "bio": "Andrea Salinas represents Oregon's 6th congressional district. She focuses on environmental protection, healthcare access, and workers' rights.",
+    "termStart": "2023-01-03",
+    "termEnd": null,
+    "committeeMemberships": [
+      "Committee on Agriculture"
+    ],
+    "votingRecord": "https://www.congress.gov/member/andrea-salinas/S000168",
+    "yearElected": 2022
+  },
+  {
+    "id": "sw-001",
+    "name": "Summer Lee",
+    "position": "U.S. Representative, PA-12",
+    "officeLevel": "federal",
+    "politicalAffiliation": "Democratic Socialist",
+    "location": {
+      "state": "PA",
+      "county": "Allegheny",
+      "city": "Pittsburgh",
+      "district": "12",
+      "latitude": 40.4406,
+      "longitude": -79.9959
+    },
+    "contact": {
+      "email": "summer.lee@mail.house.gov",
+      "phone": "(202) 225-2135",
+      "website": "https://summerlee.house.gov",
+      "socialMedia": {
+        "twitter": "@RepSummerLee"
+      }
+    },
+    "photo": null,
+    "bio": "Summer Lee represents Pennsylvania's 12th congressional district. A DSA member, she champions environmental justice, Medicare for All, and economic equality.",
+    "termStart": "2023-01-03",
+    "termEnd": null,
+    "committeeMemberships": [
+      "Committee on Oversight and Accountability"
+    ],
+    "votingRecord": "https://www.congress.gov/member/summer-lee/L000605",
+    "yearElected": 2022
+  },
+  {
+    "id": "gr-001",
+    "name": "Greg Casar",
+    "position": "U.S. Representative, TX-35",
+    "officeLevel": "federal",
+    "politicalAffiliation": "Democratic Socialist",
+    "location": {
+      "state": "TX",
+      "county": "Travis",
+      "city": "Austin",
+      "district": "35",
+      "latitude": 30.2672,
+      "longitude": -97.7431
+    },
+    "contact": {
+      "email": "greg.casar@mail.house.gov",
+      "phone": "(202) 225-4865",
+      "website": "https://casar.house.gov",
+      "socialMedia": {
+        "twitter": "@RepCasar"
+      }
+    },
+    "photo": null,
+    "bio": "Greg Casar represents Texas's 35th congressional district. A DSA member and former Austin City Council member, he fights for workers' rights, affordable housing, and immigrant justice.",
+    "termStart": "2023-01-03",
+    "termEnd": null,
+    "committeeMemberships": [
+      "Committee on Oversight and Accountability"
+    ],
+    "votingRecord": "https://www.congress.gov/member/greg-casar/C001134",
+    "yearElected": 2022
+  }
+]

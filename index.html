@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Interactive map displaying Democratic Socialist and Socialist elected officials across the United States">
+    <title>Democratic Socialist Officials Map</title>
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+          crossorigin=""/>
+    
+    <!-- Leaflet MarkerCluster CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header role="banner">
+        <h1>Democratic Socialist Officials Map</h1>
+        <p>Discover elected Democratic Socialist and Socialist officials across the United States</p>
+    </header>
+
+    <!-- Main Container -->
+    <main role="main">
+        <!-- Filter Panel -->
+        <aside id="filter-panel" class="filter-panel" role="complementary" aria-label="Filter controls">
+            <div class="filter-header">
+                <h2>Filters</h2>
+                <button id="toggle-filters" class="toggle-btn" aria-label="Toggle filter panel" aria-expanded="true">
+                    <span class="toggle-icon">&#9776;</span>
+                </button>
+            </div>
+            
+            <div id="filter-content" class="filter-content">
+                <!-- Search -->
+                <div class="filter-group">
+                    <label for="search-input">
+                        <span class="filter-label">Search</span>
+                    </label>
+                    <input 
+                        type="text" 
+                        id="search-input" 
+                        class="search-input" 
+                        placeholder="Name or location..."
+                        aria-label="Search by name or location"
+                    />
+                </div>
+
+                <!-- State Selection -->
+                <div class="filter-group">
+                    <label for="state-select">
+                        <span class="filter-label">State</span>
+                    </label>
+                    <select id="state-select" class="filter-select" aria-label="Filter by state">
+                        <option value="">All States</option>
+                    </select>
+                </div>
+
+                <!-- Office Level -->
+                <div class="filter-group">
+                    <fieldset>
+                        <legend class="filter-label">Office Level</legend>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="office-level" value="federal" checked aria-label="Federal offices">
+                                <span>Federal</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="office-level" value="state" checked aria-label="State offices">
+                                <span>State</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="office-level" value="county" checked aria-label="County offices">
+                                <span>County</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="office-level" value="city" checked aria-label="City offices">
+                                <span>City</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="office-level" value="town" checked aria-label="Town offices">
+                                <span>Town</span>
+                            </label>
+                        </div>
+                    </fieldset>
+                </div>
+
+                <!-- Political Affiliation -->
+                <div class="filter-group">
+                    <fieldset>
+                        <legend class="filter-label">Political Affiliation</legend>
+                        <div id="affiliation-checkboxes" class="checkbox-group">
+                            <!-- Dynamically populated -->
+                        </div>
+                    </fieldset>
+                </div>
+
+                <!-- Year Elected -->
+                <div class="filter-group">
+                    <label for="year-start">
+                        <span class="filter-label">Year Elected</span>
+                    </label>
+                    <div class="year-range">
+                        <input 
+                            type="number" 
+                            id="year-start" 
+                            class="year-input" 
+                            placeholder="From"
+                            min="1900"
+                            max="2030"
+                            aria-label="Year elected from"
+                        />
+                        <span class="range-separator">to</span>
+                        <input 
+                            type="number" 
+                            id="year-end" 
+                            class="year-input" 
+                            placeholder="To"
+                            min="1900"
+                            max="2030"
+                            aria-label="Year elected to"
+                        />
+                    </div>
+                </div>
+
+                <!-- Results Count -->
+                <div class="results-count" role="status" aria-live="polite">
+                    <span id="results-text">Loading officials...</span>
+                </div>
+
+                <!-- Clear Filters -->
+                <button id="clear-filters" class="btn-clear" aria-label="Clear all filters">
+                    Clear All Filters
+                </button>
+            </div>
+        </aside>
+
+        <!-- Map Container -->
+        <section id="map-container" class="map-container" role="region" aria-label="Interactive map of officials">
+            <div id="map" role="application" aria-label="United States map with official locations"></div>
+            
+            <!-- Loading Indicator -->
+            <div id="loading-indicator" class="loading-indicator" aria-live="polite">
+                <div class="spinner"></div>
+                <p>Loading map data...</p>
+            </div>
+
+            <!-- No Results Message -->
+            <div id="no-results" class="no-results" style="display: none;" role="alert">
+                <p>No officials found matching your filters.</p>
+                <p>Try adjusting your filter criteria.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+            crossorigin=""></script>
+    
+    <!-- Leaflet MarkerCluster JS -->
+    <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script src="js/data-loader.js"></script>
+    <script src="js/state-manager.js"></script>
+    <script src="js/map-manager.js"></script>
+    <script src="js/filter-controller.js"></script>
+    <script src="js/popup-component.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Interactive map displaying Democratic Socialist and Socialist elected officials across the United States">
+    <title>Democratic Socialist Officials Map</title>
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+          crossorigin=""/>
+    
+    <!-- Leaflet MarkerCluster CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header role="banner">
+        <h1>Democratic Socialist Officials Map</h1>
+        <p>Discover elected Democratic Socialist and Socialist officials across the United States</p>
+    </header>
+
+    <!-- Main Container -->
+    <main role="main">
+        <!-- Filter Panel -->
+        <aside id="filter-panel" class="filter-panel" role="complementary" aria-label="Filter controls">
+            <div class="filter-header">
+                <h2>Filters</h2>
+                <button id="toggle-filters" class="toggle-btn" aria-label="Toggle filter panel" aria-expanded="true">
+                    <span class="toggle-icon">&#9776;</span>
+                </button>
+            </div>
+            
+            <div id="filter-content" class="filter-content">
+                <!-- Search -->
+                <div class="filter-group">
+                    <label for="search-input">
+                        <span class="filter-label">Search</span>
+                    </label>
+                    <input 
+                        type="text" 
+                        id="search-input" 
+                        class="search-input" 
+                        placeholder="Name or location..."
+                        aria-label="Search by name or location"
+                    />
+                </div>
+
+                <!-- State Selection -->
+                <div class="filter-group">
+                    <label for="state-select">
+                        <span class="filter-label">State</span>
+                    </label>
+                    <select id="state-select" class="filter-select" aria-label="Filter by state">
+                        <option value="">All States</option>
+                    </select>
+                </div>
+
+                <!-- Office Level -->
+                <div class="filter-group">
+                    <fieldset>
+                        <legend class="filter-label">Office Level</legend>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="office-level" value="federal" checked aria-label="Federal offices">
+                                <span>Federal</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="office-level" value="state" checked aria-label="State offices">
+                                <span>State</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="office-level" value="county" checked aria-label="County offices">
+                                <span>County</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="office-level" value="city" checked aria-label="City offices">
+                                <span>City</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="office-level" value="town" checked aria-label="Town offices">
+                                <span>Town</span>
+                            </label>
+                        </div>
+                    </fieldset>
+                </div>
+
+                <!-- Political Affiliation -->
+                <div class="filter-group">
+                    <fieldset>
+                        <legend class="filter-label">Political Affiliation</legend>
+                        <div id="affiliation-checkboxes" class="checkbox-group">
+                            <!-- Dynamically populated -->
+                        </div>
+                    </fieldset>
+                </div>
+
+                <!-- Year Elected -->
+                <div class="filter-group">
+                    <label for="year-start">
+                        <span class="filter-label">Year Elected</span>
+                    </label>
+                    <div class="year-range">
+                        <input 
+                            type="number" 
+                            id="year-start" 
+                            class="year-input" 
+                            placeholder="From"
+                            min="1900"
+                            max="2030"
+                            aria-label="Year elected from"
+                        />
+                        <span class="range-separator">to</span>
+                        <input 
+                            type="number" 
+                            id="year-end" 
+                            class="year-input" 
+                            placeholder="To"
+                            min="1900"
+                            max="2030"
+                            aria-label="Year elected to"
+                        />
+                    </div>
+                </div>
+
+                <!-- Results Count -->
+                <div class="results-count" role="status" aria-live="polite">
+                    <span id="results-text">Loading officials...</span>
+                </div>
+
+                <!-- Clear Filters -->
+                <button id="clear-filters" class="btn-clear" aria-label="Clear all filters">
+                    Clear All Filters
+                </button>
+            </div>
+        </aside>
+
+        <!-- Map Container -->
+        <section id="map-container" class="map-container" role="region" aria-label="Interactive map of officials">
+            <div id="map" role="application" aria-label="United States map with official locations"></div>
+            
+            <!-- Loading Indicator -->
+            <div id="loading-indicator" class="loading-indicator" aria-live="polite">
+                <div class="spinner"></div>
+                <p>Loading map data...</p>
+            </div>
+
+            <!-- No Results Message -->
+            <div id="no-results" class="no-results" style="display: none;" role="alert">
+                <p>No officials found matching your filters.</p>
+                <p>Try adjusting your filter criteria.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+            crossorigin=""></script>
+    
+    <!-- Leaflet MarkerCluster JS -->
+    <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script src="js/data-loader.js"></script>
+    <script src="js/state-manager.js"></script>
+    <script src="js/map-manager.js"></script>
+    <script src="js/filter-controller.js"></script>
+    <script src="js/popup-component.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
