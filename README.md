@@ -93,6 +93,83 @@ To add new officials or update existing ones, edit the `data/officials.json` fil
 - `committeeMemberships`: Array of committee names
 - `votingRecord`: URL or description
 
+### Handling Officials-Elect (Won Election, Not Yet in Office)
+
+**Policy:** Contributors may submit pull requests for newly elected officials immediately after election results are certified. However, **PRs will not be merged until the official has taken office** and their term has officially begun.
+
+**When to Submit:**
+- ✅ **After election results are certified** - You can submit a PR right away
+- ✅ Gather all information while it's fresh and available
+- ✅ Use the official's actual `termStart` date (even if in the future)
+
+**When PRs Get Merged:**
+- 🔄 **After the official swearing-in ceremony** and the `termStart` date has passed
+- 🔄 When the official has begun exercising their duties
+- ⏳ Your PR will remain open until that date
+
+**How to Submit for Officials-Elect:**
+
+1. **Use the Actual Term Start Date:**
+   - Set `termStart` to the official swearing-in date (e.g., "2025-01-03")
+   - Set `yearElected` to the election year
+
+2. **Bio Field:**
+   - Include their election victory and upcoming term start
+   - Example: "[Name] was elected in November 2024 and will take office on January 3, 2025. A DSA member, she advocates for..."
+
+3. **Contact Information:**
+   - If official government contact isn't available yet, use `null`
+   - Include campaign or transition social media if that's their public presence
+   - This will be updated before merge if needed
+
+4. **Committee Assignments:**
+   - Leave `committeeMemberships` as an empty array `[]`
+   - These are typically announced after taking office
+
+5. **Voting Record:**
+   - Set to `null` for newly elected officials
+
+**Best Practice for Early Submissions:**
+- Submit soon after election to claim the work and gather information
+- Note in your PR: "Official takes office on [date] - ready to merge after that date"
+- Be prepared to update contact information closer to the term start date if requested
+- Your contribution will be credited even though merge is delayed
+
+**Example for Officials-Elect:**
+```json
+{
+  "id": "xx-001",
+  "name": "Jane Doe",
+  "position": "U.S. Representative, CA-10",
+  "officeLevel": "federal",
+  "politicalAffiliation": "Democratic Socialist",
+  "location": {
+    "state": "CA",
+    "county": "Alameda",
+    "city": "Oakland",
+    "district": "10",
+    "latitude": 37.8044,
+    "longitude": -122.2712
+  },
+  "contact": {
+    "email": null,
+    "phone": null,
+    "website": null,
+    "socialMedia": {
+      "twitter": "@JaneDoe",
+      "instagram": null
+    }
+  },
+  "photo": null,
+  "bio": "Jane Doe was elected in November 2024 and will take office on January 3, 2025. A DSA member, she advocates for Medicare for All and the Green New Deal.",
+  "termStart": "2025-01-03",
+  "termEnd": null,
+  "committeeMemberships": [],
+  "votingRecord": null,
+  "yearElected": 2024
+}
+```
+
 ## Technologies Used
 
 - **Leaflet.js**: Interactive map library
